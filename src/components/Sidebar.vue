@@ -2,7 +2,7 @@
   <div>
     <nav class="nav bg-dark d-flex flex-column shadow-right">
       <div>
-        <h1 class="mt-3">1CWK100 - Advanced Web Devleopment</h1>
+        <h1 class="mt-3">Monitoring Student Keylogging Tool For Academics</h1>
       </div>
       <div class="section-split"></div>
       <div class="nav-account">
@@ -74,8 +74,8 @@ nav {
   position: fixed;
   background: linear-gradient(
     to right,
-    #a80a14c5 0%,
-    #a80a14c5 100%,
+    rgba(49, 44, 44, 0.773) 0%,
+    #383333c5 100%,
     #fff 0%,
     #fff 0%
   );

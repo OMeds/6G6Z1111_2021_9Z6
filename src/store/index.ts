@@ -2,7 +2,7 @@ import {createStore} from "vuex";
 import * as fb from "../firebase";
 import router from "../router/index";
 import createPersistedState from "vuex-persistedstate"
-import * as Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 //const Cookies = require('js-cookie')
 
 export const store = createStore({

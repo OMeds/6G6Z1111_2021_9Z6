@@ -4,38 +4,41 @@
       <form class="d-flex flex-col items-center input-group w-50 mx-auto">
         <div class="w-100 d-flex flex-row p-0">
           <input
-          type="search"
-          class="form-control z-10"
-          id="search-bar"
-          placeholder="Search"
-          aria-label="Search"
-          autocomplete="off"
-          v-model="card"
-          @input="filterCards"
-          @focus="update"
+            type="search"
+            class="form-control z-10"
+            id="search-bar"
+            placeholder="Search"
+            aria-label="Search"
+            autocomplete="off"
+            v-model="card"
+            @input="filterCards"
+            @focus="update"
           />
-          <button
-            class="btn btn-danger"
-            type="button"
-            data-mdb-ripple-color="dark"
-            @click="submit"
-          >
+          <button class="btn btn-danger" type="button" data-mdb-ripple-color="dark" @click="submit">
             <font-awesome-icon icon="search" />
           </button>
+        </div>
+        <div class="w-100" id="search-cards" v-if="filteredCards && modal">
+          <div>
+            <div id="blanket" @click="killModal"></div>
+            <input
+              type="text"
+              class="list-group-item py-2 my-1"
+              id="suggest"
+              v-for="filteredCard in filteredCards.slice(0,5)"
+              v-bind:key="filteredCard"
+              :value="filteredCard.id + ' ' + filteredCard.data().title[0].text"
+              @click="setCard(filteredCard)"
+            />
           </div>
-          <div class="w-100" id="search-cards" v-if="filteredCards && modal">
-            <div>
-              <div id="blanket" @click="killModal"></div>
-              <input type="text" class="list-group-item py-2 my-1" id="suggest" v-for="filteredCard in filteredCards.slice(0,5)" v-bind:key="filteredCard" :value="filteredCard.id + ' ' + filteredCard.data().title[0].text" @click="setCard(filteredCard)" />
-            </div>
-          </div>
-        </form>
+        </div>
+      </form>
     </div>
   </nav>
 </template>
 
 <script>
-import {db} from '../firebase';
+import { db } from '../firebase';
 export default {
   data: function() {
     return {
@@ -52,26 +55,26 @@ export default {
   methods: {
     findCharts() {
       db.collection("mutationsCollection").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {         
+        querySnapshot.forEach((doc) => {
           this.docs.push(doc);
         });
       });
       db.collection("userCollection").doc(this.$store.getters.getUserEmail).collection("charts").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {         
+        querySnapshot.forEach((doc) => {
           this.docs.push(doc);
         });
       });
     },
     update() {
       this.modal = true;
-      this.filteredCards = [];    
+      this.filteredCards = [];
     },
     filterCards() {
       this.filteredCards = [];
       this.docs.forEach((doc) => {
         const docId = doc.id;
         const docTitle = doc.data().title[0].text
-        if(this.card != '' && (docId.toLowerCase().includes(this.card.toLowerCase()) || docTitle.toLowerCase().includes(this.card.toLowerCase()))) {
+        if (this.card != '' && (docId.toLowerCase().includes(this.card.toLowerCase()) || docTitle.toLowerCase().includes(this.card.toLowerCase()))) {
           this.filteredCards.push(doc);
         }
       });
@@ -96,28 +99,28 @@ export default {
 button {
   background: linear-gradient(
     to right,
-    #a80a14c5 0%,
-    #a80a14c5 100%,
+    #615c5cc5 0%,
+    #464041c5 100%,
     #fff 0%,
     #fff 100%
   );
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 252, 252, 0.6);
   height: 38px;
 }
 
-#mainBody{
+#mainBody {
   font-family: "Roboto", sans-serif;
 }
 
-#blanket{
-    position: fixed;
-    padding: 0;
-    margin: 0;
+#blanket {
+  position: fixed;
+  padding: 0;
+  margin: 0;
 
-    z-index: 2;
+  z-index: 2;
 
-    top: 0;
-    left: 0;
+  top: 0;
+  left: 0;
 
   width: 100%;
   height: 100%;
@@ -133,11 +136,6 @@ button {
   padding: 6px 12px;
 
   z-index: 10;
-}
-
-.form-control {
-  border-color: #a80a14c5;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }
 
 .shadow-bottom {

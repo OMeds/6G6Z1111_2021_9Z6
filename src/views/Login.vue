@@ -6,8 +6,8 @@
     ></PasswordReset>
     <section>
       <div class="col1">
-        <link rel="icon" href="<%= BASE_URL %>heart.png" />
-        <h1>Experimental Data-sharing Platform for Cardiomyopathies</h1>
+        <link rel="icon" href="<%= BASE_URL %>" />
+        <h1>Monitoring Academics Portal</h1>
         <p>
           Welcome to the Platform Please Sign In Using your Credentials Or
           Create An Account Below
