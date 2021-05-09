@@ -1,5 +1,6 @@
 {
   "projects": {
     "default": "advancedwebdevelopment-24804"
+    "targets":index.html
   }
 }
