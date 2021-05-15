@@ -17,6 +17,7 @@
     "core-js": "^3.6.5",
     "firebase": "^8.2.9",
     "js-cookie": "^2.2.1",
+    "pug-plain-loader": "^1.1.0",
     "uid-ts": "0.0.3",
     "uuid": "^8.3.2",
     "vue": "^3.0.6",

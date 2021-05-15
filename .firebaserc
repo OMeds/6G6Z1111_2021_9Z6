@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "advancedwebdevelopment-24804"
-    "targets":index.html
+    "Keylogger": "keylogger-project-b3026"
   }
 }

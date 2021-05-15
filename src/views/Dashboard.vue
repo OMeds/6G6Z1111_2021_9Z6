@@ -24,7 +24,7 @@
 <script lang="ts">
 import Search from "../components/Search.vue";
 import Sidebar from "../components/Sidebar.vue";
-import HelloWorld from "../components/HelloWorld.vue";
+
 import LineChart from "../components/LineChart.vue";
 import { defineComponent } from "vue";
 import computed from "vue";
